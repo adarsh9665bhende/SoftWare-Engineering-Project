@@ -4,7 +4,14 @@
 \usepackage{geometry}
 \usepackage{titlesec}
 \usepackage{xcolor}
-\geometry{margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{array}
+\geometry{margin=1.5in}
 
 % Custom colors
 \definecolor{titlecolor}{RGB}{0,102,204}
@@ -89,7 +96,7 @@ Designed to streamline payment gateway implementation and optimize administrativ
     \caption{DFD-01: Money Flow and Operational Efficiency}
 \end{figure}
 
-\subsection{DFD-01 Workflow}
+\subsubsection{Workflow}
 
 \begin{enumerate}
 
@@ -154,7 +161,7 @@ Tailored to accommodate both regular users and retailers, emphasizing payment pr
     \caption{DFD-02: Dual Payment Mode Emphasis}
 \end{figure}
 
-\textbf{DFD-02 Workflow:}
+\subsubsection{Workflow:}
 \begin{enumerate}
 
 \item \textbf{User Interaction for Regular Users and Retailers:}
@@ -209,60 +216,143 @@ After a thorough evaluation of various Data Flow Diagrams (DFDs), DFD-01 has bee
   \item \textbf{Consistent Data Flow:} DFD-01 ensures a consistent and logical flow of data throughout the system. This consistency is crucial for maintaining data integrity and avoiding potential errors or discrepancies in transaction processing.
 
 \end{enumerate}
-
 \section{Function Point Analysis}
 
 \subsection{External Inputs (EI)}
 \begin{itemize}
-    \item \textbf{Simple:} Authentication (User/Customer), Login (User/Customer), SignUp (User/Customer), Authentication (Admin), Login (Admin), SignUp (Admin), Authentication (Retailers)
-    \item \textbf{Average:} Profile (User/Customer), Product Management (Admin), Edit profile (Retailers), View Cart Contents (Cart), Remove Items from Cart (Cart), Add Items to Cart (Cart), View Order History (Order Management), Generate Invoices (Order Management), Search for Products within the platform
+    \item \textbf{Simple:} 
+    \begin{itemize}
+        \item User Login
+        \item User Sign Up
+        \item Payment Gateway
+        \item Admin Login
+        \item Admin Sign Up
+        \item Retailers Login
+        \item Retailers Sign Up
+    \end{itemize}
+
+    \item \textbf{Average:} 
+    \begin{itemize}
+        \item Retailers Product Management
+        \item Placing Order
+        \item User Cart Management
+    \end{itemize}
+
+    \item \textbf{Complex:} 
+    \begin{itemize}
+        \item Filtering Products
+        \item View Order History (Order Management)
+    \end{itemize}
 \end{itemize}
-\textbf{Total External Inputs (EI):} 19
 
 \subsection{External Outputs (EO)}
 \begin{itemize}
-    \item \textbf{Simple:} None
-    \item \textbf{Average:} View/Edit Profile Information (User/Customer), Add, Edit, Delete Product Listings (Admin), Edit profile (Retailers), View Cart Contents (Cart), View Order History (Order Management), Generate Invoices (Order Management)
-\end{itemize}
-\textbf{Total External Outputs (EO):} 6
+    \item \textbf{Simple:} 
+    \begin{itemize}
+        \item Profile Content
+    \end{itemize}
 
-\subsection{Logical Internal Files (ILF)}
-\begin{itemize}
-    \item \textbf{Simple:} None
-    \item \textbf{Average:} Profile Information (User/Customer), Product Listings (Admin), Retailer Profile Information (Retailers), Cart Contents (Cart), Order History (Order Management), Invoices (Order Management)
+    \item \textbf{Average:} 
+    \begin{itemize}
+        \item Invoice Generation
+    \end{itemize}
+
+    \item \textbf{Complex:}
+    \begin{itemize}
+        \item Order Confirmation
+        \item Payment Confirmation
+    \end{itemize}
 \end{itemize}
-\textbf{Total Logical Internal Files (ILF):} 6
+
+\subsection{Internal Logic Files (ILF)}
+\begin{itemize}
+    \item \textbf{Simple:} 
+    \begin{itemize}
+        \item User Database
+        \item Retailer Database
+    \end{itemize}
+
+    \item \textbf{Average:} 
+    \begin{itemize}
+        \item Product Catalogue
+    \end{itemize}
+
+    \item \textbf{Complex:}
+    \begin{itemize}
+        \item Admin Statistics
+    \end{itemize}
+\end{itemize}
 
 \subsection{External Interface Files (EIF)}
 \begin{itemize}
-\item Node
+    \item \textbf{Simple:}
+    \begin{itemize}
+        \item Dummy Payment Gateway
+    \end{itemize}
+    \item \textbf{Average:} None
+    \item \textbf{Complex:} None
 \end{itemize}
 
 \subsection{External Inquiries (EQ)}
 \begin{itemize}
-\item Node
+    \item \textbf{Simple:} 
+    \begin{itemize}
+        \item Advanced Filtering
+    \end{itemize}
+    \item \textbf{Average:}
+    \begin{itemize}
+        \item Categorising
+    \end{itemize}
+    \item \textbf{Complex:}
+    \begin{itemize}
+        \item Search Products
+    \end{itemize}
 \end{itemize}
-\subsection{Function Point Contribution Table}
+
+\newpage
+\section{Function Point Contribution Table}
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Adjust row height
+    \label{tab:fpa}
+    \begin{tabular}{lccc}
+        \hline
+        Component & \multicolumn{3}{c}{Complexity (Weight)} \\
+        \cline{2-4}
+        & Simple (3) & Average (4) & Complex (6) \\
+        \hline
+        EI & 7 & 3 & 2 \\
+        EO & 1 & 1 & 2 \\
+        ILF & 2 & 1 & 1 \\
+        EIF & 1 & - & - \\
+        EQ & 1 & 1 & 1 \\
+        \textbf{Total UFP} & \textbf{36} & \textbf{24} & \textbf{36} \\
+        \hline
+    \end{tabular}
+    
+    \caption{Function point analysis table}
+\end{table}
+
+
+
+
+\section{Calculating Unadjusted Function Points (UFP)}
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-Function Type & Simple & Average & Complex \\
-\hline
-External Input & 3 & 4 & 7 \\
-External Output & 4 & 5 & 10 \\
-Logical Internal File & 7 & 10 & 15 \\
-\hline
-\end{tabular}
+
+\begin{align*}
+    UFP &= (7 \times 3) + (3 \times 4) + (2 \times 6) + (1 \times 4) + (1 \times 5)\\
+    &\quad + (2 \times 7) + (2 \times 7) + (1 \times 10) + (1 \times 15) + (1 \times 5)\\
+    &\quad  + (1 \times 3) + (1 \times 4) + (1 \times 6) \\
+    &= 21 + 12 + 12 + 4 + 5 + 14 + 14 + 10 + 15 + 5 + 3 + 4 + 6 \\
+    &= 96
+\end{align*}
 \end{center}
+\textbf{Unadjusted Function Points (UFP):} 96
 
-\subsection{Classifying Elements and Calculating Unadjusted Function Points (UFP)}
-\begin{itemize}
-    \item \textit{Classifying Elements:} Follow the classification based on complexity.
-    \item \textit{Calculating UFP:} Use the weighted sum formula.
-\end{itemize}
-
-\textbf{Result:}
-
-\textit{Unadjusted Function Points (UFP):} 99
+\begin{center}
+\vspace{4cm}
+    \Huge\textbf{Thank You!}
+\end{center}
 
 \end{document}
