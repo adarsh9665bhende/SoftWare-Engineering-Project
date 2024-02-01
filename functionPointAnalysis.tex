@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{enumitem}
+
+\geometry{a4paper, margin=1in}
+\title{Function Point Analysis}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{External Inputs (EI)}
+\begin{itemize}[leftmargin=*]
+    \item Authentication (User/Customer)
+    \item Login (User/Customer)
+    \item SignUp (User/Customer)
+    \item Profile (User/Customer)
+    \item View/Edit Profile Information (User/Customer)
+    \item Authentication (Admin)
+    \item Login (Admin)
+    \item SignUp (Admin)
+    \item Product Management (Admin)
+    \item Add, Edit, Delete Product Listings (Admin)
+    \item Authentication (Retailers)
+    \item Product Management (Retailers)
+    \item Edit profile (Retailers)
+    \item View Cart Contents (Cart)
+    \item Remove Items from Cart (Cart)
+    \item Add Items to Cart (Cart)
+    \item View Order History (Order Management)
+    \item Generate Invoices (Order Management)
+    \item Search for Products within the platform (Search Option)
+\end{itemize}
+\textbf{Total External Inputs (EI):} 19
+
+\section*{External Outputs (EO)}
+\begin{itemize}[leftmargin=*]
+    \item View/Edit Profile Information (User/Customer)
+    \item Add, Edit, Delete Product Listings (Admin)
+    \item Edit profile (Retailers)
+    \item View Cart Contents (Cart)
+    \item View Order History (Order Management)
+    \item Generate Invoices (Order Management)
+\end{itemize}
+\textbf{Total External Outputs (EO):} 6
+
+\section*{Logical Internal Files (ILF)}
+\begin{itemize}[leftmargin=*]
+    \item Profile Information (User/Customer)
+    \item Product Listings (Admin)
+    \item Retailer Profile Information (Retailers)
+    \item Cart Contents (Cart)
+    \item Order History (Order Management)
+    \item Invoices (Order Management)
+\end{itemize}
+\textbf{Total Logical Internal Files (ILF):} 6
+
+\section*{External Interface Files (EIF)}
+None identified in the provided project description.
+
+\section*{External Inquiries (EQ)}
+None identified in the provided project description.
+
+Given the breakdown of function points, we can now calculate the Unadjusted Function Points (UFP) and proceed with the analysis as outlined in the document. Since no External Interface Files (EIF) or External Inquiries (EQ) are identified, we'll proceed with the calculation based on the identified External Inputs (EI), External Outputs (EO), and Logical Internal Files (ILF). Let's continue with the calculation.
+
+To calculate the Unadjusted Function Points (UFP), we'll use the weighted sum formula mentioned in the document:
+
+\[
+UFP = \sum_{i=1}^{5} \sum_{j=1}^{3} (w_{ij} \times C_{ij})
+\]
+
+Where:
+\begin{itemize}[leftmargin=*]
+    \item $w_{ij}$ represents the entry in the $i$th row and $j$th column of the table.
+    \item $C_{ij}$ represents the count of the number of elements of type $i$ that have been classified as having the complexity corresponding to column $j$.
+\end{itemize}
+
+Let's use the provided table for Function Point contribution of an element:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Function Type & Simple & Average & Complex \\
+\hline
+External Input & 3 & 4 & 7 \\
+External Output & 4 & 5 & 10 \\
+Logical Internal File & 7 & 10 & 15 \\
+\hline
+\end{tabular}
+\end{center}
+
+Now, we'll classify each identified element as simple, average, or complex based on its description, and then calculate the Unadjusted Function Points (UFP). Let's proceed with the calculation.
+
+\textbf{Classifying Elements:}
+
+\textit{External Inputs (EI):}
+\begin{itemize}[leftmargin=*]
+    \item Simple: Authentication (User/Customer), Login (User/Customer), SignUp (User/Customer), Authentication (Admin), Login (Admin), SignUp (Admin), Authentication (Retailers)
+    \item Average: Profile (User/Customer), Product Management (Admin), Edit profile (Retailers), View Cart Contents (Cart), Remove Items from Cart (Cart), Add Items to Cart (Cart), View Order History (Order Management), Generate Invoices (Order Management), Search for Products within the platform
+\end{itemize}
+
+\textit{External Outputs (EO):}
+\begin{itemize}[leftmargin=*]
+    \item Simple: None
+    \item Average: View/Edit Profile Information (User/Customer), Add, Edit, Delete Product Listings (Admin), Edit profile (Retailers), View Cart Contents (Cart), View Order History (Order Management), Generate Invoices (Order Management)
+\end{itemize}
+
+\textit{Logical Internal Files (ILF):}
+\begin{itemize}[leftmargin=*]
+    \item Simple: None
+    \item Average: Profile Information (User/Customer), Product Listings (Admin), Retailer
+
+ Profile Information (Retailers), Cart Contents (Cart), Order History (Order Management), Invoices (Order Management)
+\end{itemize}
+
+\textbf{Calculating Unadjusted Function Points (UFP):}
+
+\[
+UFP = (3 \times 7) + (4 \times 9) + (7 \times 6) = 21 + 36 + 42 = 99
+\]
+
+\textbf{Result:}
+
+\textit{Unadjusted Function Points (UFP):} 99
+
+\end{document}
+```
