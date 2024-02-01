@@ -1,37 +1,63 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
-\usepackage{float}
 \usepackage{geometry}
-\usepackage{tocloft}
+\usepackage{titlesec}
+\usepackage{xcolor}
 \geometry{margin=1in}
 
-% Define a command for the group member information
-\newcommand{\groupmember}[2]{\textbf{#1:} #2 \\}
+% Custom colors
+\definecolor{titlecolor}{RGB}{0,102,204}
+\definecolor{subtitlecolor}{RGB}{51,51,51}
 
-% Customize Table of Contents
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\renewcommand{\contentsname}{Table of Contents}
-
-\title{\vspace{-2cm} \includegraphics[width=0.3\textwidth]{iith_logo.png} \\[1cm] Software Requirement Analysis (SRA) \\ Group XY}
-
-
-
-
-\date{\today}
+% Redefine \maketitle to include a custom title page
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \centering
+        % Include your project logo
+        \includegraphics[width=0.4\textwidth]{iith_logo.png} 
+        \vspace{2cm} % Adjust vertical space
+        
+        % Title
+        {\color{titlecolor}\Huge\bfseries Software Analysis Specification (SRA)\par}
+        \vspace{1.5cm} % Adjust vertical space
+        {\color{black}\large Group 07\par}
+        % Project name
+        {\color{subtitlecolor}\Large Project Name: E-commerce Website\par}
+        \vspace{0.5cm} % Adjust vertical space
+        
+        % Group members
+        {\fontsize{14}{18}\selectfont Group Members:\par}
+        \vspace{0.2cm} % Adjust vertical space
+        {\large
+        \begin{center}
+            \begin{tabular}{|l|l|}
+                \hline
+                \textbf{Name} & \textbf{Roll Number} \\
+                \hline
+                K Vivek Kumar & CS21BTECH11026 \\
+                Bhende Adarsh Suresh & CS21BTECH11008 \\
+                Jarupula Sai Kumar & CS21BTECH11023 \\
+                N Sree Harsha & CS21BTECH11042 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        }
+        \vspace{0.5cm} % Adjust vertical space
+        
+        % Date
+        {\large\today\par}
+        \vspace{1cm} % Adjust vertical space
+    \end{titlepage}
+}
 
 \begin{document}
 
 \maketitle
 
-\begin{abstract}
-    This document provides a detailed analysis of the software requirements for an e-commerce platform developed by Group XY. It includes a comprehensive context diagram, data flow diagrams (DFDs), and justification for the chosen DFD. The document aims to outline the system's key functionalities and user interactions.
-\end{abstract}
-
 \newpage
 \tableofcontents
 \newpage
-
 
 \section{Context Diagram}
 
@@ -45,9 +71,9 @@ A comprehensive context diagram highlighting the interaction among three key ent
   \item \textbf{Administrator:} Monitors overall sales, gathers platform statistics, and ensures smooth operations.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{dfd1.jpg}
+    \includegraphics[width=0.8\textwidth]{cfd.jpg}
     \caption{Context Diagram for the E-commerce Platform}
 \end{figure}
 
@@ -57,7 +83,7 @@ A comprehensive context diagram highlighting the interaction among three key ent
 \subsection{DFD-01: Money Flow and Operational Efficiency}
 Designed to streamline payment gateway implementation and optimize administrative charges and retailer shares. Focuses on illustrating the flow of money, product deliveries, and user interactions within the platform.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{dfd1.jpg}
     \caption{DFD-01: Money Flow and Operational Efficiency}
@@ -122,7 +148,7 @@ Designed to streamline payment gateway implementation and optimize administrativ
 
 Tailored to accommodate both regular users and retailers, emphasizing payment processes for both cash on delivery and online transactions. Prioritizes cart management, order initiation, and receipt generation for diverse payment methods.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{dfd2.jpg}
     \caption{DFD-02: Dual Payment Mode Emphasis}
@@ -184,5 +210,59 @@ After a thorough evaluation of various Data Flow Diagrams (DFDs), DFD-01 has bee
 
 \end{enumerate}
 
+\section{Function Point Analysis}
+
+\subsection{External Inputs (EI)}
+\begin{itemize}
+    \item \textbf{Simple:} Authentication (User/Customer), Login (User/Customer), SignUp (User/Customer), Authentication (Admin), Login (Admin), SignUp (Admin), Authentication (Retailers)
+    \item \textbf{Average:} Profile (User/Customer), Product Management (Admin), Edit profile (Retailers), View Cart Contents (Cart), Remove Items from Cart (Cart), Add Items to Cart (Cart), View Order History (Order Management), Generate Invoices (Order Management), Search for Products within the platform
+\end{itemize}
+\textbf{Total External Inputs (EI):} 19
+
+\subsection{External Outputs (EO)}
+\begin{itemize}
+    \item \textbf{Simple:} None
+    \item \textbf{Average:} View/Edit Profile Information (User/Customer), Add, Edit, Delete Product Listings (Admin), Edit profile (Retailers), View Cart Contents (Cart), View Order History (Order Management), Generate Invoices (Order Management)
+\end{itemize}
+\textbf{Total External Outputs (EO):} 6
+
+\subsection{Logical Internal Files (ILF)}
+\begin{itemize}
+    \item \textbf{Simple:} None
+    \item \textbf{Average:} Profile Information (User/Customer), Product Listings (Admin), Retailer Profile Information (Retailers), Cart Contents (Cart), Order History (Order Management), Invoices (Order Management)
+\end{itemize}
+\textbf{Total Logical Internal Files (ILF):} 6
+
+\subsection{External Interface Files (EIF)}
+\begin{itemize}
+\item Node
+\end{itemize}
+
+\subsection{External Inquiries (EQ)}
+\begin{itemize}
+\item Node
+\end{itemize}
+\subsection{Function Point Contribution Table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Function Type & Simple & Average & Complex \\
+\hline
+External Input & 3 & 4 & 7 \\
+External Output & 4 & 5 & 10 \\
+Logical Internal File & 7 & 10 & 15 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Classifying Elements and Calculating Unadjusted Function Points (UFP)}
+\begin{itemize}
+    \item \textit{Classifying Elements:} Follow the classification based on complexity.
+    \item \textit{Calculating UFP:} Use the weighted sum formula.
+\end{itemize}
+
+\textbf{Result:}
+
+\textit{Unadjusted Function Points (UFP):} 99
 
 \end{document}

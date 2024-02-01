@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Context Diagram}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Key Functionalities}{2}{}%
+\contentsline {section}{\numberline {2}Data Flow Diagrams (DFDs)}{2}{}%
+\contentsline {subsection}{\numberline {2.1}DFD-01: Money Flow and Operational Efficiency}{2}{}%
+\contentsline {subsection}{\numberline {2.2}DFD-01 Workflow}{2}{}%
+\contentsline {subsection}{\numberline {2.3}DFD-02: Dual Payment Mode Emphasis}{4}{}%
+\contentsline {section}{\numberline {3}Justification for Choosing DFD-01}{6}{}%
+\contentsline {section}{\numberline {4}Function Point Analysis}{7}{}%
+\contentsline {subsection}{\numberline {4.1}External Inputs (EI)}{7}{}%
+\contentsline {subsection}{\numberline {4.2}External Outputs (EO)}{7}{}%
+\contentsline {subsection}{\numberline {4.3}Logical Internal Files (ILF)}{7}{}%
+\contentsline {subsection}{\numberline {4.4}External Interface Files (EIF)}{7}{}%
+\contentsline {subsection}{\numberline {4.5}External Inquiries (EQ)}{7}{}%
+\contentsline {subsection}{\numberline {4.6}Function Point Contribution Table}{7}{}%
+\contentsline {subsection}{\numberline {4.7}Classifying Elements and Calculating Unadjusted Function Points (UFP)}{8}{}%
