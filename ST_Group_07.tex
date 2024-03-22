@@ -1,0 +1,348 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+\begin{document}
+
+\section*{Test Overview}
+
+\textbf{List of all operations/modules that you plan to test:}
+
+
+\section*{Test Details}
+
+\subsection*{Unit Tests for Modules}
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \textbf{Module} & \textbf{Test Case} & \textbf{Possibilities} \\
+        \hline
+        Product Upload Module & 
+        Test Case 1: Verify that a product can be successfully uploaded with all required fields filled. & 
+        #1 success:product is uploaded successfully\\&&
+        #2 unsuccessful: failure while uploading product
+    \\
+        & Test Case 2: Verify that uploading a product with missing required fields fails. & 
+        #1 success: give warning to fill the missing field\\&&
+        #2 unsuccessful: accept incomplete information
+         \\
+        
+        & Test Case 3: Verify that uploading a product with an invalid image format fails. & 
+        #1 success:give error  \\&&
+        #2 unsuccessful: accept the invalid format
+        \\
+        \hline
+        Order Input Module & 
+        Test Case 1: Verify that a user can create an order by adding products to the cart and proceeding to checkout. & 
+        #1 success:selecte products are added to cart\\&&
+        #2 unsuccessful:unmatched number of product selected and added to the cart
+        \\
+        
+        & Test Case 2: Verify that adding a product to the cart updates the total price accordingly. & 
+        #1 success: total price is updated correctly\\&&
+        \\
+        \hline
+        Search Bar Module & 
+        Test Case 1: Verify that entering a valid search query returns relevant search results. & 
+        #1 success: fetch the searched results correctly \\&&
+        #2 unsuccessful:irrelevant results or error
+        \\
+      
+        & Test Case 2: Verify that entering an invalid search query returns no results. & 
+        #1 success:empty result\\&&
+        \\
+        \hline
+        Login Page Module & 
+        Test Case 1: Verify that a registered user can log in with valid credentials. & 
+        #1 success:successful login\\&&
+        #2 unsuccessful : error login 
+        \\
+       
+        & Test Case 2: Verify that login fails for an invalid username or password. & 
+        #1 success: warning(invalid username or password) \\&&
+        \\
+        
+        \hline
+        Register Page Module & 
+        Test Case 1: Verify that a new user can register with valid details. & 
+        #1 success: new account created \\&&
+        #2 unsuccessful:error creating account/already exist
+        \\
+        
+        & Test Case 2: Verify that registration fails if the email address is already in use. & 
+        #1 success:warning(email id already used)\\&&
+        #2 unsuccessful: account get created
+         \\
+       
+        & Test Case 3: Verify that registration fails if any required field is left blank. & 
+        #1 success:warning(fill all fields)\\&&
+        #2 unsuccessful: account get created
+        \\
+        \hline
+        Registration Confirmation Module & 
+        Test Case 1: Verify that a confirmation email is sent to the user after successful registration. & 
+        #1 success: verification email sent to user\\&&
+        #2 unsuccessful: fail to sent email
+        \\
+        
+        & Test Case 2: Verify that the registration confirmation link expires after a specified time period. & 
+        #1 success:accept registration within time bound \\
+        \hline
+        Profile Updation Confirmation Module & 
+        Test Case 1: Verify that a confirmation message is displayed to the user after successfully updating their profile. & 
+        #1 success:changes have been saved successfully\\&&
+        #2 unsuccessful:fail to save changes
+        \\
+        
+        & Test Case 2: Verify that the user's profile information is updated correctly in the database. & 
+        Ensure that changes made by the user are reflected accurately in their profile data stored in the database. \\
+        \hline
+        PDF Detailing Module & 
+        Test Case 1: Verify that a PDF document is generated with correct details for an order. & 
+        #1 success:accurate details of bill and product reflects in pdf\\&&
+        #2 unsuccessful: wrong details/error generating pdf
+        \\
+        
+        \hline
+        Price Calculation with Admin Tasks Module & 
+        Test Case 1: Verify that prices are calculated correctly for products, considering any discounts or promotions applied. & 
+        Ensure that the final price displayed to the user reflects any applicable discounts or promotions. \\
+        \hline
+        & Test Case 2: Verify that admin users can update product prices, and the changes are reflected accurately on the website. & 
+        Ensure that changes made by admin users to product prices are applied correctly and visible to all users. \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+
+\subsection*{Integrating testing:}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \textbf{Modules} & \textbf{Test Case} & \textbf{Input/Outcome} \\
+        \hline
+        \multirow{2}{*}{Search Bar Module \& Search Results List Module} & Test Case 1: Searching for an existing product & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User enters a valid search query for an existing product.
+            \item Outcome: Search Bar Module sends the query to Search Results List Module. Search Results List Module retrieves relevant products from the database and displays them to the user.
+        \end{itemize} \\
+        \cline{2-3}
+        & Test Case 2: Searching for a non-existing product & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User enters a search query for a product that doesn't exist.
+            \item Outcome: Search Bar Module sends the query to Search Results List Module. Search Results List Module displays a message indicating that no matching products were found.
+        \end{itemize} \\
+        \hline
+        \multirow{2}{*}{Login Page Module, Authentication Provider Module \& Session Token Verifier Module} & Test Case 1: Successful login with valid credentials & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User enters correct username and password.
+            \item Outcome: Login Page Module sends credentials to Authentication Provider Module. Authentication Provider Module verifies credentials and generates a session token. Session Token Verifier Module validates the token, and the user is successfully logged in.
+        \end{itemize} \\
+        \cline{2-3}
+        & Test Case 2: Failed login with invalid credentials & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User enters incorrect username or password.
+            \item Outcome: Authentication Provider Module rejects the login attempt. Login Page Module displays an error message indicating invalid credentials.
+        \end{itemize} \\
+        \hline
+        \multirow{2}{*}{Order Input Module, Order Preview Module \& Price Calculation with Admin Tax Module} & Test Case 1: Placing an order with multiple products & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User adds multiple products to the cart and proceeds to checkout.
+            \item Outcome: Order Input Module gathers selected products and sends them to Order Preview Module. Order Preview Module displays a summary of the order, including prices. Price Calculation with Admin Tax Module calculates the total price with applicable taxes, and the user can confirm the order.
+        \end{itemize} \\
+        \cline{2-3}
+        & Test Case 2: Applying a discount code during checkout & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: User enters a valid discount code during checkout.
+            \item Outcome: Order Input Module applies the discount code to the order total. Price Calculation with Admin Tax Module recalculates the total price, applying the discount, and displays the updated price to the user.
+        \end{itemize} \\
+        \hline
+        \multirow{2}{*}{Product Upload Module \& Product Checkout Module} & Test Case 1: Adding a new product and purchasing it & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: Admin uploads a new product to the website. User adds the newly uploaded product to the cart and proceeds to checkout.
+            \item Outcome: Product Upload Module adds the new product to the database. Product Checkout Module includes the newly added product in the checkout process, allowing the user to complete the purchase.
+        \end{itemize} \\
+        \cline{2-3}
+        & Test Case 2: Updating an existing product and purchasing it & 
+        \begin{itemize}[leftmargin=*]
+            \item Input: Admin updates an existing product's details (e.g., price, quantity). User adds the updated product to the cart and proceeds to checkout.
+            \item Outcome: Product Upload Module updates the product details in the database. Product Checkout Module includes the updated product in the checkout process, reflecting the changes made by the admin.
+        \end{itemize} \\
+        \hline
+    \end{tabularx}
+\end{table}
+
+\subsection*{System testing:}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline
+        \textbf{Module} & \textbf{Test Case} & \textbf{Input/Expected Outcome} \\
+        \hline
+        \multirow{4}{*}{Product Upload Module} & 
+        Test Case 1: Successful Product Upload & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin uploads a product with all required details (name, description, price, image). \\
+            Expected Outcome: Product is successfully added to the database and is visible on the website.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 2: Product Upload with Invalid Image Format &
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin attempts to upload a product with an invalid image format (e.g., .txt file). \\
+            Expected Outcome: Product upload fails, and an appropriate error message is displayed to the admin.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{Order Input Module} & 
+        Test Case 3: Placing an Order with Multiple Products & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User adds multiple products to the cart and proceeds to checkout. \\
+            Expected Outcome: Order is successfully created with all selected products, and user is redirected to the payment page.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 4: Placing an Order with Insufficient Stock & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User attempts to order a product with insufficient stock. \\
+            Expected Outcome: Order input fails, and user is notified that the product is out of stock.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{Admin Home with Basic Stats} & 
+        Test Case 5: Display of Basic Statistics & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin accesses the admin dashboard. \\
+            Expected Outcome: Admin dashboard displays basic statistics such as total number of products, total orders, etc.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 6: Trend Analysis of Sales & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin views sales statistics over a specific time period. \\
+            Expected Outcome: Admin can view trends in sales (e.g., daily, weekly, monthly) to analyze business performance.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{Product Checkout Module} & 
+        Test Case 7: Successful Checkout Process & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User completes the checkout process by entering shipping and payment details. \\
+            Expected Outcome: Order is successfully placed, and user receives an order confirmation with details.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 8: Checkout with Invalid Payment Information & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User enters invalid payment information during checkout. \\
+            Expected Outcome: Checkout process fails, and user is prompted to correct payment information.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{PDF Generation Module} & 
+        Test Case 9: Generation of Order Invoice PDF & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin generates a PDF invoice for a specific order. \\
+            Expected Outcome: PDF invoice is generated with accurate order details and can be downloaded or emailed to the customer.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 10: PDF Generation with Large Order Data & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Admin attempts to generate a PDF invoice for an order with a large number of items. \\
+            Expected Outcome: PDF invoice is generated efficiently without performance issues or data truncation.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{Authentication Provider} & 
+        Test Case 11: Successful User Login & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User enters correct credentials and logs in. \\
+            Expected Outcome: User is successfully authenticated and redirected to the dashboard.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 12: Failed User Login & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User enters incorrect credentials during login. \\
+            Expected Outcome: Login attempt fails, and user is prompted to enter valid credentials.
+        \end{tabular} \\
+        \hline
+        \multirow{4}{*}{URL Pages} & 
+        Test Case 13: Accessing Protected Pages without Login & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: User attempts to access a protected page without logging in. \\
+            Expected Outcome: User is redirected to the login page and prompted to log in before accessing the page.
+        \end{tabular} \\
+        \cline{2-3}
+        & Test Case 14: Accessing Admin Pages without Admin Privileges & 
+        \begin{tabular}[t]{@{}l@{}}
+            Input: Regular user attempts to access admin-specific pages. \\
+            Expected Outcome: Access is denied, and user is notified that admin privileges are required to access the page.
+        \end{tabular} \\
+        \hline
+    \end{tabularx}
+\end{table}
+\subsection*{Structural testing:}
+
+\subsection{Performance testing:}
+
+
+\subsection{Stress testing:}
+\section*{Test Analysis}
+
+
+\subsection{Structural test plan/report (optional)}
+
+\subsection{Performance test plan/report}
+\section*{Objective}
+The objective of the performance testing is to evaluate the responsiveness, stability, and scalability of the e-commerce website under various load conditions.
+
+\section*{Scope}
+The performance testing will focus on the following modules:
+\begin{itemize}
+  \item Search Results List Module
+  \item Stats Generation Module
+  \item PDF Generation Module
+  \item Price Calculation with Admin Taxes Module
+\end{itemize}
+
+\section*{Performance Metrics}
+The performance metrics to be measured include:
+
+\begin{itemize}
+  \item \textbf{Response Time}: Measure the time taken by the system to respond to user requests.
+\end{itemize}
+
+\section*{Test Scenarios}
+The test scenarios to be executed include:
+
+\begin{itemize}
+  \item Search Results List Module: Measure response time for various search queries.
+  \item Stats Generation Module: Evaluate time taken to generate daily, weekly, and monthly statistics.
+  \item PDF Generation Module: Measure PDF generation time for orders of different sizes.
+  \item Price Calculation with Admin Taxes Module: Evaluate response time for price calculations with different tax rates.
+\end{itemize}
+
+\section*{Load Profile}
+The load profile for the performance testing includes:
+
+\begin{itemize}
+  \item Ramp-up: Gradually increase the number of virtual users from 0 to peak load over a specified duration.
+  \item Peak Load: Simulate peak user load expected during peak hours or sales events.
+  \item Duration: Run tests for a sufficient duration to capture performance metrics and identify any performance degradation over time.
+\end{itemize}
+
+\section*{Test Environment}
+The performance tests will be conducted in a dedicated test environment that mirrors the production environment as closely as possible. Performance testing tools such as Apache JMeter or Gatling will be used to simulate user load and monitor performance metrics.
+
+\section*{Test Execution}
+Performance tests will be executed in multiple iterations, varying load conditions and scenarios. System performance metrics will be monitored in real-time during test execution. Test results will be analyzed to identify any performance issues, bottlenecks, or areas for improvement.
+
+\section*{Reporting}
+A detailed performance test report will be prepared summarizing test objectives, methodologies, results, and recommendations. The report will include performance metrics, graphs, and analysis of system behavior under different load conditions. Recommendations for optimizing system performance and addressing any identified issues will be provided.
+\subsection{Stress test plan/report (optional)}
+
+\end{document}
+
